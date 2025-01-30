@@ -2,7 +2,7 @@
 
 ## Initial Setup and Programming languages development environment setup
 
-### Rocky Linux Haskell initial setup from minimal distro
+### Rocky Linux initial setup from minimal distro
 
 - Install dnf: ```sudo microdnf install dnf```
 
