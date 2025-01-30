@@ -3,6 +3,7 @@
 ## Rocky Linux Haskell install dnf from minimal distro
 
 - Install dnf: ```sudo microdnf install dnf```
+- Install tar and xz: ```sudo microdnf install tar xz```
 
 ## Rocky Linux Haskell Stack Install
 
