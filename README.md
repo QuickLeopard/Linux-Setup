@@ -1,6 +1,6 @@
 # Linux-Setup
 
-## Initial Setup and Programming languages dev environment setup
+## Initial Setup and Programming languages development environment setup
 
 ### Rocky Linux Haskell install dnf from minimal distro
 
