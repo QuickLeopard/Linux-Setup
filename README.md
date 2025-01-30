@@ -2,7 +2,7 @@
 
 ## Initial Setup and Programming languages development environment setup
 
-### Rocky Linux Haskell install dnf from minimal distro
+### Rocky Linux Haskell install ```dnf``` utility from minimal distro
 
 - Install dnf: ```sudo microdnf install dnf```
 - Install tar and xz: ```sudo microdnf install tar xz```
