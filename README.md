@@ -20,4 +20,8 @@
 
 - Install prerequisities for Windows GDI support in Linux: ```sudo apt-get update && sudo apt-get install -y apt-utils libgdiplus libc6-dev```
 
+### SkiaSharp add Linux No Dependencies
+
+- Add NuGet package: ```SkiaSharp.NativeAssets.Linux.NoDependencies```
+
 ## Security Setup
