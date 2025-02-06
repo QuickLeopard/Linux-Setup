@@ -16,6 +16,11 @@
 
 - Install .NET 8 Runtime: ```sudo yum install dotnet-runtime-8.0 -y```
 
+### Rocky Linux _btop_ Install
+
+- Install _btop_ utility:
+  ```dnf -y install epel-release && dnf makecache && dnf -y install btop```
+
 ### Ubuntu add GDI support(```System.Drawing.Common```)
 
 - Install prerequisities for Windows GDI support in Linux: ```sudo apt-get update && sudo apt-get install -y apt-utils libgdiplus libc6-dev```
