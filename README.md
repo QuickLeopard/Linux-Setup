@@ -15,11 +15,17 @@
 ### Rocky Linux .Net Install
 
 - Install .NET 8 Runtime: ```sudo yum install dotnet-runtime-8.0 -y```
+- Install .NET 8 SDK: ```sudo yum install dotnet-sdk-8.0 -y```
 
 ### Rocky Linux _btop_ Install
 
 - Install _btop_ utility:
   ```dnf -y install epel-release && dnf makecache && dnf -y install btop```
+
+### Rocky Linux _btop_ Install
+
+- Install _tmux_ utility:
+  ```dnf -y install tmux```
 
 ### Ubuntu add GDI support(```System.Drawing.Common```)
 
