@@ -17,12 +17,16 @@
 - Install .NET 8 Runtime: ```sudo yum install dotnet-runtime-8.0 -y```
 - Install .NET 8 SDK: ```sudo yum install dotnet-sdk-8.0 -y```
 
+### Rocky Linux Real-Time kernel Install
+- Enable RT repositiory: ```dnf config-manager --set-enabled rt```
+- Real-Time kernel install: ```dnf install kernel-rt```
+
 ### Rocky Linux _btop_ Install
 
 - Install _btop_ utility:
   ```dnf -y install epel-release && dnf makecache && dnf -y install btop```
 
-### Rocky Linux _btop_ Install
+### Rocky Linux _tmux_ Install
 
 - Install _tmux_ utility:
   ```dnf -y install tmux```
