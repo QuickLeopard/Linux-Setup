@@ -18,8 +18,8 @@
 - Install .NET 8 SDK: ```sudo yum install dotnet-sdk-8.0 -y```
 
 ### Rocky Linux Real-Time kernel Install
-- Enable RT repositiory: ```dnf config-manager --set-enabled rt```
-- Real-Time kernel install: ```dnf install kernel-rt```
+- Enable RT repositiory: ```sudo dnf config-manager --set-enabled rt```
+- Real-Time kernel install: ```sudo dnf install kernel-rt```
 
 ### Rocky Linux _btop_ Install
 
