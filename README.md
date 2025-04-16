@@ -26,7 +26,8 @@
 
 - Chrony install: ```sudo dnf install chrony```
 - Check Chrony time sync: ```chronyc tracking```
-- Restart Chrony service: ```sudo systemctl status chronyd```
+- Check Chrony service status: ```sudo systemctl status chronyd```
+- Restart Chrony service: ```sudo systemctl restart chronyd```
 - Config file Path: _/etc/chrony.conf_
 
 ### Rocky Linux _btop_ Install
