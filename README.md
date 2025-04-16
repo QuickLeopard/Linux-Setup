@@ -18,8 +18,16 @@
 - Install .NET 8 SDK: ```sudo yum install dotnet-sdk-8.0 -y```
 
 ### Rocky Linux Real-Time kernel Install
+
 - Enable RT repositiory: ```sudo dnf config-manager --set-enabled rt```
 - Real-Time kernel install: ```sudo dnf install kernel-rt```
+
+### Rocky Linux NTP Client Install
+
+- Chrony install: ```sudo dnf install chrony```
+- Check Chrony time sync: ```chronyc tracking```
+- Restart Chrony service: ```sudo systemctl status chronyd```
+- Config file Path: _/etc/chrony.conf_
 
 ### Rocky Linux _btop_ Install
 
