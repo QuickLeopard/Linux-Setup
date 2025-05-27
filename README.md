@@ -20,7 +20,7 @@
 ### Rocky Linux Real-Time kernel Install
 
 - Enable RT repositiory: ```sudo dnf config-manager --set-enabled rt```
-- Real-Time kernel install: ```sudo dnf install kernel-rt```
+- Real-Time kernel install: ```sudo dnf -y install kernel-rt```
 
 ### Rocky Linux NTP Client Install
 
