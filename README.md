@@ -33,12 +33,12 @@
 ### Rocky Linux _btop_ Install
 
 - Install _btop_ utility:
-  ```dnf -y install epel-release && dnf makecache && dnf -y install btop```
+  ```sudo dnf -y install epel-release && dnf makecache && dnf -y install btop```
 
 ### Rocky Linux _tmux_ Install
 
 - Install _tmux_ utility:
-  ```dnf -y install tmux```
+  ```sudo dnf -y install tmux```
 
 ### Ubuntu add GDI support(```System.Drawing.Common```)
 
