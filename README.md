@@ -6,6 +6,11 @@
 
 - Install dnf: ```sudo microdnf install dnf```
 
+### Rocky Linux 9/10 Network Speed Test
+
+- Install SpeedTest CLI: ```sudo dnf install speedtest-cli```
+- Test Network Speed: ```speedtest```
+
 ### Rocky Linux 9 Haskell Stack Install
 
 - Install prerequisities: ```sudo dnf install gmp gmp-devel mpfr mpfr-devel libmpc libmpc-devel```
