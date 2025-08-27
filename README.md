@@ -8,6 +8,7 @@
 
 ### Rocky Linux 9/10 Network Speed Test
 
+- Enable EPEL repository: ```sudo dnf install epel-release```
 - Install SpeedTest CLI: ```sudo dnf install speedtest-cli```
 - Test Network Speed: ```speedtest```
 
