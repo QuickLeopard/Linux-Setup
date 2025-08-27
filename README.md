@@ -8,8 +8,8 @@
 
 ### Rocky Linux 9/10 Network Speed Test
 
-- Enable EPEL repository: ```sudo dnf install epel-release```
-- Install SpeedTest CLI: ```sudo dnf install speedtest-cli```
+- Enable Pyhton Pip: ```sudo dnf install python3-pip```
+- Install SpeedTest CLI: ```pip3 install speedtest-cli```
 - Test Network Speed: ```speedtest```
 
 ### Rocky Linux 9 Haskell Stack Install
