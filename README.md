@@ -8,7 +8,7 @@
 
 ### Rocky Linux 9/10 Network Speed Test
 
-- Enable Pyhton Pip: ```sudo dnf install python3-pip```
+- Enable Pyhton Pip package manager: ```sudo dnf install python3-pip```
 - Install SpeedTest CLI: ```pip3 install speedtest-cli```
 - Test Network Speed: ```speedtest```
 
