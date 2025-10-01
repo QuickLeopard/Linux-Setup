@@ -35,6 +35,7 @@
 - Clone rt-tests repository: ```git clone git://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git```
 - Install build-tools: ```sudo dnf groupinstall "Development Tools" -y```
 - Install numa-devel: ```sudo dnf install -y numactl-devel```
+- Install tuna utility: ```sudo dnf install tuna```
 
 ### Rocky Linux 9/10 Docker Install
 
