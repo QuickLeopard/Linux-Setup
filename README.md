@@ -30,6 +30,8 @@
 - List all available kernels: ```ls -1 /boot/vmlinuz*```
 - Set RT kernel with grubby utility: ```sudo grubby --set-default=/boot/vmlinuz-6.12.0-55.34.1.el10_0.x86_64+rt```
 - Clone rt-tests repository: ```git clone git://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git```
+- Install build-tools: ```sudo dnf groupinstall "Development Tools" -y```
+- Install numa-devel: ```sudo dnf install -y numactl-devel```
 
 ### Rocky Linux 9/10 Docker Install
 
