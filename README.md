@@ -51,6 +51,45 @@
 - Verify Docker running: ```sudo systemctl status docker```
 - Make sure Docker starts at every server reboot: ```sudo systemctl enable docker```
 
+### Rocky Linux 9/10 Docker Compose Install
+
+```bash
+sudo dnf update -y
+```
+
+#### 2. Add the Docker Repository
+Rocky Linux 10 is binary-compatible with RHEL 10. Use the official Docker repository for RHEL:
+```bash
+sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+```
+
+#### 3. Install Docker Engine and Compose Plugin
+Install the core Docker engine along with the **Docker Compose plugin**. This enables the modern `docker compose` (without the hyphen) command:
+```bash
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+*Note: If you encounter a `containerd.io` conflict, use the `--allowerasing` flag.*
+
+#### 4. Start and Enable Docker
+Start the Docker service and set it to launch automatically on boot:
+```bash
+sudo systemctl enable --now docker
+```
+
+#### 5. Verify the Installation
+Check that Docker Compose is installed correctly by viewing the version:
+```bash
+docker compose version
+```
+
+#### 6. (Optional) Run Docker as a Non-Root User
+To run `docker compose` commands without prefixing them with `sudo`, add your current user to the `docker` group:
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+
 ### Rocky Linux 9/10 NTP Client Install
 
 - Chrony install: ```sudo dnf install chrony```
