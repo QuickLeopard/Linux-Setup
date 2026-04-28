@@ -53,6 +53,7 @@
 
 ### Rocky Linux 9/10 Docker Compose Install
 
+#### 1. Update all packages
 ```bash
 sudo dnf update -y
 ```
