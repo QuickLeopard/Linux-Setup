@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# 1. Privilege check
+# 1. Проверка прав
 if [[ $EUID -ne 0 ]]; then
-   echo "Error: This script must be run as root or with sudo."
+   echo "Ошибка: скрипт требует прав root или sudo."
    exit 1
 fi
 
-# Determine DNF version (DNF5 vs DNF4)
-# Rocky Linux 10 transitions to DNF5; this ensures compatibility across versions.
+# Определение версии DNF (DNF5 vs DNF4)
 if command -v dnf5 &> /dev/null; then
     DNF="dnf5"
     PLUGINS_PKG="dnf5-plugins"
@@ -17,49 +16,43 @@ else
     PLUGINS_PKG="dnf-plugins-core"
 fi
 
-# 2. Clean up conflicting packages
-echo "==> Removing conflicting packages..."
-$DNF remove -y docker \
-                  docker-client \
-                  docker-client-latest \
-                  docker-common \
-                  docker-latest \
-                  docker-latest-logrotate \
-                  docker-logrotate \
-                  docker-engine \
-                  podman \
-                  runc || true
+# 2. Удаление конфликтующих пакетов
+echo "==> Удаление конфликтующих пакетов..."
+$DNF remove -y docker docker-client docker-client-latest docker-common \
+    docker-latest docker-latest-logrotate docker-logrotate docker-engine \
+    podman runc || true
 
-# 3. Install dependencies
-echo "==> Installing dependencies..."
-$DNF install -y $PLUGINS_PKG
+# 3. Установка зависимостей и критически важных модулей ядра
+echo "==> Установка зависимостей и kernel-modules-extra..."
+$DNF install -y $PLUGINS_PKG kernel-modules-extra
 
-# 4. Add Docker repository
-echo "==> Adding Docker repository..."
-# Rocky Linux is RHEL-compatible. Docker officially recommends the 'centos' repo for Rocky/Alma.
-# If your environment strictly requires the 'rhel' repo, replace 'centos' with 'rhel' in the URL below.
+# 4. Добавление репозитория Docker
+echo "==> Добавление репозитория Docker..."
 $DNF config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-# 5. Install Docker Engine and Compose Plugin
-echo "==> Installing Docker Engine, Containerd, Buildx, and Compose..."
-$DNF install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin --allowerasing
+# 5. Установка Docker Engine и плагинов
+echo "==> Установка Docker Engine, Containerd, Buildx и Compose..."
+$DNF install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin \
+    docker-compose-plugin --allowerasing
 
-# 6. Start and enable Docker
-echo "==> Starting and enabling Docker daemon..."
+# 6. Загрузка модуля ядра для iptables (xt_addrtype)
+echo "==> Загрузка модуля ядра xt_addrtype..."
+modprobe xt_addrtype || echo "⚠️ Модуль не загружен в текущее ядро. Потребуется перезагрузка."
+
+# 7. Запуск и добавление в автозагрузку
+echo "==> Включение и запуск службы Docker..."
 systemctl enable --now docker
 
-# 7. Verification
-echo "==> Verifying Docker Engine..."
+# 8. Верификация
+echo "==> Проверка Docker Engine..."
 docker run --rm hello-world
-
-echo "==> Verifying Docker Compose Plugin..."
+echo "==> Проверка Docker Compose Plugin..."
 docker compose version
 
-# 8. Optional: Non-root user configuration
+# 9. Настройка прав пользователя (опционально)
 if [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
-    echo "==> Adding user '${SUDO_USER}' to the 'docker' group..."
+    echo "==> Добавление пользователя '${SUDO_USER}' в группу 'docker'..."
     usermod -aG docker "${SUDO_USER}"
-    echo "Note: Run 'newgrp docker' or log out and back in to apply group changes."
 fi
 
-echo "==> Installation complete."
+echo "==> Установка успешно завершена."
