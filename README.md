@@ -42,6 +42,24 @@
 ### Optimizing RT kernel
 - https://docs.redhat.com/en/documentation/red_hat_enterprise_linux_for_real_time/8/html-single/optimizing_rhel_8_for_real_time_for_low_latency_operation/index
 
+### Rocky Linux 9/10 failban Install
+
+- Add the official EPEL repository: ```sudo dnf install -y epel-release```
+- Install failban: ```sudo dnf install -y fail2ban fail2ban-firewalld```
+- Enable failban service: ```sudo systemctl enable --now fail2ban```
+- Copy the configuration: ```sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local```
+- Edit the configuration: ```sudo nano /etc/fail2ban/jail.d/sshd.local```
+- Copy/Paste the configuration:
+```
+[sshd]
+enabled = true
+port = ssh
+logpath = %(sshd_log)s
+maxretry = 3
+bantime = 1d
+```
+- Restart failban service: ```sudo systemctl restart fail2ban```
+
 ### Rocky Linux 9/10 Docker Install
 
 - Update the package database: ```sudo dnf check-update```
